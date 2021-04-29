@@ -17,21 +17,14 @@ public class VisitWani {
         driver.manage().window().maximize();
     }
     @Test
-    public void testWani() {
+    public void testWani() throws InterruptedException {
         driver.get("http://wanisheth.com");
         System.out.println(driver.getTitle());
+        String title= driver.getTitle();
+        Assert.assertEquals(title, "Wanisheth - Home");
+        Thread.sleep(5000);
     }
-    @Test(priority = 1)
-    public void testTitleSite(){
-       String title= driver.getTitle();
-       Assert.assertEquals(title, "Wanisheth - Home");
-    }
-    @Test(priority = 2)
-    public void testTitle(){
-       String title= driver.getTitle();
-       Assert.assertEquals(title, "Wanisheth -Home");
-    }
-    @AfterTest
+   @AfterTest
     public void closeBrowser(){
         driver.quit();
     }
